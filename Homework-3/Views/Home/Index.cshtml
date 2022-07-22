@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Le_Crystal_HW3.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+@*buttons on home page to choose all movies, quick search, or detailed search*@
+<h1>Index</h1>
+<form asp-action ="Index" asp-controller = "Home" method ="get">
+    <p class = "form-group">
+        Search: <input name ="SearchString" class="form-control" /><br/>
+        <button type ="submit" class="btn btn-primary">Search</button>
+        <a asp-action="DetailedSearch" class="btn btn-success">Detailed Search</a>
+        <a asp-action="Index" class="btn btn-danger">Show All</a>
+        
+    </p>
+</form>
+@*display how many out of those searched are found out of total of movies*@
+<p>Displaying @ViewBag.SelectedMovies of @ViewBag.AllMovies movies</p>
+@*code below is how the info is displayed*@
+<table class="table">
+    <thead>
+        @*column headers*@
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IMDBID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoteAverage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>View Details</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*information displayed below column headers*@
+            <td>
+                @Html.DisplayFor(modelItem => item.IMDBID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoteAverage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.Genre.GenreName) 
+            </td> 
+            <td>
+                <a asp-action="Details" asp-route-id="@item.MovieID">Details</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
