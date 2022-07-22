@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<!---Boostrap style for buttons--->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bevo's Tacos Home</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<h1 class= "text-center">Bevo's Taco's Homepage</h1>
+<!---Button to choose Order Method dependent on CustomerType--->
+<div class="text-center">
+    <div class="btn-group-lg">
+        <a asp-action="CheckoutWalkup" class="btn btn-warning" >Walk-Up Order</a> 
+        <a asp-action="CheckoutCatering" class="btn btn-info">Catering Order</a>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model Le_Crystal_HW2.Models.WalkupOrder
+
+@{
+    ViewData["Title"] = "CheckoutWalkup";
+}
+
+<h1>Walkup Totals</h1>
+<!---exception message if not valid order--->
+<p>@ViewBag.ErrorMessage</p>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="WalkupTotals"> <!---Display page--->
+            <!---Blank order page for walkupOrders--->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfBurgers" class="control-label"></label>
+                <input asp-for="NumberOfBurgers" class="form-control" />
+                <span asp-validation-for="NumberOfBurgers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfTacos" class="control-label"></label>
+                <input asp-for="NumberOfTacos" class="form-control" />
+                <span asp-validation-for="NumberOfTacos" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Checkout" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
